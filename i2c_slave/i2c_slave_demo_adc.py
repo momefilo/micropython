@@ -9,7 +9,6 @@
 
 from machine import Pin, ADC
 import i2c_slave
-import time
 
 led = Pin("LED", Pin.OUT)# an pico ohne w anzupassen
 data = 0# Aktueller ADC-Wert

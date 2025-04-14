@@ -1,6 +1,5 @@
 # momefilo for micropython
 import ws2812
-import time
 
 # Strip initialisieren
 pin = 16

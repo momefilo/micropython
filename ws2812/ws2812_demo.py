@@ -45,7 +45,7 @@ def turn():
     for x in range(0, anzahl - 1):
       liste[x] = liste[x + 1]
       ws2812.set(x, liste[x])
-    liste[anzahl - 1] = tmp
     # Die letzte LED und das gesamte array mit optionalem dritten Parameter auf den Strip schreiben
+    liste[anzahl - 1] = tmp
     ws2812.set(anzahl - 1, liste[anzahl - 1], 1)
     

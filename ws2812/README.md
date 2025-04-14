@@ -3,7 +3,7 @@ das Modul bietet drei Funktionen und wird mit
 ```
 import ws2812
 ```
-impoertiert, und mit
+importiert, und mit
 ```
 ws2812.init(Pin, anzahl-leds)
 ```

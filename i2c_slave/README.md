@@ -1,4 +1,4 @@
-## Ein micropython- Port für pico und pico_w mit i2c_slave-Modul
+## Ein i2c_slave-Modul
 Das Modul wird mit 
 ```
 import i2c_slave

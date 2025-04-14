@@ -1,5 +1,5 @@
 # Ein micropython v1.25.0 Port für pico und pico_w
-mit drei zusaetzlichen Modulen
+mit drei zusätzlichen Modulen
 # i2c_slave
 Ist bietet die Möglichkeit den pico als i2c-Slave zu betriebn\
 siehe [README.md](i2c_slave/README.md)

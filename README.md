@@ -2,7 +2,7 @@
 ### für pico und pico_w
 mit drei zusätzlichen Modulen
 # i2c_slave
-Bietet die Möglichkeit den pico als i2c-Slave zu betriebn\
+Bietet die Möglichkeit den pico als i2c-Slave zu betreibn\
 siehe [README.md](i2c_slave/README.md)
 # ws2812
 Steuert nur einen LED-Strip, aber schneller\

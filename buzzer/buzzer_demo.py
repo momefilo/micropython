@@ -1,7 +1,7 @@
 # momefilo for micropython
 import buzzer
 import _thread
-
+buzzer.init(15)
 c  = 0
 cs = 1
 d  = 2
@@ -17,7 +17,6 @@ b  = 11
 oktave = 1
 
 def sound_PeerGynt():
-	buzzer.init(15)
 	buzzer.play(g,4,oktave)
 	buzzer.play(e,4,oktave)
 	buzzer.play(d,4,oktave)

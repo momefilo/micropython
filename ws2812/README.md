@@ -5,13 +5,13 @@ import ws2812
 ```
 importiert, und mit
 ```
-ws2812.init(Pin, anzahl-leds)
+ws2812.init(Pin, anzahl_leds)
 ```
 initialisiert. die beiden Anderen sind:
 ```
 ws2812.set(led, [rot, gruen, blau], optional_write)
 ```
-led: 0 bis anzahl-leds\
+led: 0 bis (anzahl_leds - 1)\
 [rot, gruen, blau]: sind drei Integerwerte zwischen 0 und 255\
 optional_write: mit einem optionalem dritten Parameter werden alle Farbwerte auf die leds geschrieben
 ```

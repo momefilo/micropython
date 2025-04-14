@@ -2,17 +2,18 @@
 # Das ist ein Demoprogramm für das i2c_slave-Modul  (getestet auf pico_w)
 # Das die vier ADC's auslest und die onboard-LED schaltet
 # Verbinde die pico-i2c-pins mit einem RPi-i2c-Bus und führe volgende Befehle aus
-# Mit i2cget -y 1 0x47 (0x00 bis 0x04) i 2 wird zuerst 
-# das Highbyte und dann das Lowbyte der ADC(0) bis ADC(4) empfangen
-# Mit i2cset -y 1 0x47 0x05 0x01 wird die Onboard-led ein -und
-# mit i2cset -y 1 0x47 0x05 0x00 ausgeschaltet
+# Zuerst wird das Highbyte und dann das Lowbyte der ADC(0) bis ADC(4) empfangen
+# Mit 'i2cget -y 1 0x47 0x00 i 2' ADC(0) bis
+# Mit 'i2cget -y 1 0x47 0x04 i 2' ADC(4) nur pico_w
+# Mit 'i2cset -y 1 0x47 0x05 0x01' wird die Onboard-led ein -und
+# mit 'i2cset -y 1 0x47 0x05 0x00' ausgeschaltet
 
 from machine import Pin, ADC
 import i2c_slave
 
 led = Pin("LED", Pin.OUT)# an pico ohne w anzupassen
 data = 0# Aktueller ADC-Wert
-receive = -1# led-Schaltung benoetigte Variable zur Trennung von Adress- und Datenbyte
+receive = -1# Der led-Schaltung benoetigte Variable zur Trennung von Adress- und Datenbyte
 
 def set_led(val):
   if val == 0:
@@ -46,4 +47,5 @@ def callback(i2c, handler):
   if handler == "I2C_SLAVE_FINISH":
     pass
 
+# i2c_slave.init(i2c-bus, sda, scl, freq, addr, callback)
 i2c_slave.init(0, 4, 5, 400*1000, 0x47, callback)

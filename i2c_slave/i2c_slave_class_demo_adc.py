@@ -17,7 +17,7 @@ def info():
 # ->i2cget -y 1 0x47 0x00 i 2
 #   Der Master sendet das Adressbyte '0x47' gefolgt von einem Datenbyte '0x00'
 #   auf den i2c-Bus 1 und übergibt der callback-Funktion dieser Klasse 'I2C_SLAVE_RECEIVE' als handler.
-#   Aufgrund dessen wird dort das erste Datenbyte '0x00' eingelesen und danch sendet der Master ein
+#   Aufgrund dessen wird dort das erste Datenbyte '0x00' eingelesen und danch übergibt der Master ein
 #   'I2C_SLAVE_FINISH' als handler an die callback-Funktion zurück
 #   Danach wartet der Master mit einem 'I2C_SLAVE_REQUEST' als handler darauf zwei Bytes zu empfangen.
 #   Die callback-Funktion sendet daraufhin zu erst die oberen MSB dann die unteren LSB als zwei

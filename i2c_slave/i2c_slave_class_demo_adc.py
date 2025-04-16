@@ -33,8 +33,10 @@ def info():
 #   beim initialisieren als gpio_in mitgeben und nur ein Byte als Antwort bekommen wollen
 #
 # ->i2cset -y 1 0x47 0x06 0x00
-#   Hiermit setzten wir den Zustand des gpio-pin den wir der Klasse beim initialisieren
-#   als gpio_out mitgeben
+#   Hiermit setzten wir den Zustand des gpio_out-Pin auf 0
+#
+# ->i2cset -y 1 0x47 0x06 0x01
+#   Hiermit setzten wir den Zustand des gpio_out-Pin auf 1
   pass
 
 from machine import Pin, ADC

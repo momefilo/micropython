@@ -1,4 +1,4 @@
-// ws2812B
+// momefilo for micropython
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/pio.h"

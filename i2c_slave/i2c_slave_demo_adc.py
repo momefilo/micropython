@@ -1,4 +1,4 @@
-# momefilo i2c_slave_demo_adc.py
+# momefilo for micropython
 # Das ist ein Demoprogramm für das i2c_slave-Modul  (getestet auf pico_w)
 # Das die vier ADC's auslest und die onboard-LED schaltet
 # Verbinde die pico-i2c-pins mit einem RPi-i2c-Bus und führe volgende Befehle aus

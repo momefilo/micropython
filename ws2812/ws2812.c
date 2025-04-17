@@ -25,9 +25,6 @@ static mp_obj_t ws2812b_info(){
     printf("ws2812.set(num_led, [r, g, b], optional_set)\n");
     printf("#ohne optionel_set muss ws2812.write() aufgerufen werden\n");
     printf("ws2812.write() #schreibt das Array auf den Strip\n");
-    printf("ws2812.move(Richtung)\n");
-    printf("shiftet den gesamten Strip um eine LED in Richtung\n");
-    printf("Richtung = 0 = rueckwaerts, Richtung != 0 = vorwaerts\n");
     return mp_const_none;
 }
 MP_DEFINE_CONST_FUN_OBJ_0(ws2812b_info_obj, ws2812b_info);
@@ -108,25 +105,6 @@ static mp_obj_t ws2812b_write(){
 }
 MP_DEFINE_CONST_FUN_OBJ_0(ws2812b_write_obj, ws2812b_write);
 
-static mp_obj_t ws2812b_move(mp_obj_t _dir){
-    if( mp_obj_get_int(_dir) > 0){
-        uint32_t tmp = Buf_asm[Bufsize_asm-1];
-        for(int i=Bufsize_asm-1; i>0; i--){
-            Buf_asm[i] = Buf_asm[i-1];
-        }
-        Buf_asm[0] = tmp;
-    }
-    else {
-        uint32_t tmp = Buf_asm[0];
-        for(int i=0; i<Bufsize_asm-1; i++){
-            Buf_asm[i] = Buf_asm[i+1];
-        }
-        Buf_asm[Bufsize_asm-1] = tmp;
-    }
-    asm_handle();
-    return mp_const_none;
-}
-MP_DEFINE_CONST_FUN_OBJ_1(ws2812b_move_obj, ws2812b_move);
 
 // Export zu micropython
 static const mp_rom_map_elem_t ws2812_module_globals_table[] = {
@@ -135,7 +113,6 @@ static const mp_rom_map_elem_t ws2812_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR_init), MP_ROM_PTR(&ws2812_init_obj) },
     { MP_ROM_QSTR(MP_QSTR_set), MP_ROM_PTR(&ws2812_set_obj) },
     { MP_ROM_QSTR(MP_QSTR_write), MP_ROM_PTR(&ws2812b_write_obj) },
-    { MP_ROM_QSTR(MP_QSTR_move), MP_ROM_PTR(&ws2812b_move_obj) },
 };
 static MP_DEFINE_CONST_DICT(ws2812_module_globals, ws2812_module_globals_table);
 

@@ -78,7 +78,7 @@ MP_DEFINE_CONST_FUN_OBJ_2(ws2812_init_obj, ws2812b_init);
 
 static mp_obj_t ws2812b_set(size_t n_args, const mp_obj_t *args){
     if(n_args < 2) {
-        mp_raise_NotImplementedError("Min. 2 Parameter:\nws2812.set(LEDnr, [r, g, b]) or\n ws2812.set(LEDnr, [g, r, b], now)");
+        mp_raise_NotImplementedError(MP_ERROR_TEXT("Min. 2 Parameter:\nws2812.set(LEDnr, [r, g, b]) or\n ws2812.set(LEDnr, [g, r, b], now)"));
         return mp_const_none;
     }
     uint16_t led = mp_obj_get_int(args[0]);

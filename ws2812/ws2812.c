@@ -7,7 +7,7 @@
 #include "hardware/dma.h"
 #include "py/runtime.h"
 #include "py/obj.h"
-// execfile("ws2812_demo.py")
+
 uint Pio_offset_asm;// Die Speicheradresse des PIO-Programms "asm.pio"
 static uint32_t *Buf_asm;// Die Daten welche von der Statemaschine verarbeitet werden
 uint Dma_asm;// Der Kanal zum Speicherbereich der Daten
@@ -15,8 +15,6 @@ PIO Pio_asm = pio0;// Die PIO-Bank (pio0,pio1)
 int Sm_asm = 0;// Die Statemaschine (0,1,2,3)
 uint Bufsize_asm;// Anzahl led's. Der Umfang der 24bit-Daten in uint32
 uint Baudrate_asm = 800 * 1000;// Die Baudrate des Kanals 800KHz 1250ns Bitdauer
-
-//static mp_obj_t zeiger;
 
 static mp_obj_t ws2812b_info(){
     printf("ws2812 steuert nur einen ws2812-LED-Strip\n");
@@ -30,12 +28,12 @@ static mp_obj_t ws2812b_info(){
 MP_DEFINE_CONST_FUN_OBJ_0(ws2812b_info_obj, ws2812b_info);
 
 static void __isr __not_in_flash_func(asm_handle)(void){
-	dma_hw->ints0 = 1u << Dma_asm;// clear the irq
-	//Leseadesse auf Datenanfang setzten
+    // clear the irq
+    dma_hw->ints0 = 1u << Dma_asm;
+    //Leseadesse auf Datenanfang setzten
     dma_channel_set_read_addr(Dma_asm, &Buf_asm[0], true);
-//    dma_channel_set_read_addr(Dma_asm, (volatile void *)(uint32_t)zeiger, true);
-	// Reset-Einsprungpunkt zur Statemaschine aufrufen
-	pio_sm_exec(Pio_asm, Sm_asm, asm_set_bits(Pio_offset_asm));
+    // Reset-Einsprungpunkt zur Statemaschine aufrufen
+    pio_sm_exec(Pio_asm, Sm_asm, asm_set_bits(Pio_offset_asm));
 }
 
 static mp_obj_t ws2812b_init(mp_obj_t _pin, mp_obj_t _len){
@@ -44,7 +42,6 @@ static mp_obj_t ws2812b_init(mp_obj_t _pin, mp_obj_t _len){
     // Datenspeicher allokieren 
     Bufsize_asm = len;
     Buf_asm = m_malloc(sizeof(uint32_t)*len);
-//    zeiger = MP_OBJ_FROM_PTR(&Buf_asm[0]);
     MP_REGISTER_ROOT_POINTER(uint32_t *Buf_asm);
     // Datenkanal-Transfer an Datenumfang anpassen
     Dma_asm = dma_claim_unused_channel(true);

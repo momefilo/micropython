@@ -1,5 +1,5 @@
 #include(${CMAKE_CURRENT_LIST_DIR}/mandelbrodt/micropython.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/i2c_slave/micropython.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/ws2812/micropython.cmake)
-include(${CMAKE_CURRENT_LIST_DIR}/buzzer_sound/micropython.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/buzzer/micropython.cmake)
 #include(${CMAKE_CURRENT_LIST_DIR}/test/micropython.cmake)
